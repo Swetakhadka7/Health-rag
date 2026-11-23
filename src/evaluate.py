@@ -1,18 +1,34 @@
 import json
+import sys
 from pathlib import Path
-
-from search import search
 
 QUESTIONS = Path("eval/questions.jsonl")
 K = 5
 
 
+def get_search(method):
+    if method == "vector":
+        from search import search
+        return search
+    if method == "keyword":
+        from bm25_search import keyword_search
+        return keyword_search
+    if method == "hybrid":
+        from hybrid import hybrid_search
+        return hybrid_search
+    raise SystemExit("Method must be: vector, keyword or hybrid")
+
+
 def main():
+    method = sys.argv[1] if len(sys.argv) > 1 else "vector"
+    run_search = get_search(method)
+    print("Method:", method)
+
     questions = [json.loads(line) for line in QUESTIONS.open(encoding="utf-8")]
     recalls, hits = [], []
 
     for q in questions:
-        results = search(q["question"], k=K)
+        results = run_search(q["question"], k=K)
         found = {(r["doc"], r["page"]) for r in results}
         expected = {(e["doc"], e["page"]) for e in q["expected"]}
         matched = expected & found

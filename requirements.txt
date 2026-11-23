@@ -74,6 +74,7 @@ nbconvert==7.17.2
 nbformat==5.11.1
 nest-asyncio2==1.7.4
 networkx==3.4.2
+nltk==3.10.4
 notebook==7.6.5
 notebook_shim==0.2.4
 numpy==2.2.6
@@ -102,6 +103,7 @@ python-json-logger==4.2.0
 pywinpty==3.1.2
 PyYAML==6.0.3
 pyzmq==27.3.0
+rank-bm25==0.2.2
 referencing==0.37.0
 regex==2026.9.29
 requests==2.34.2
