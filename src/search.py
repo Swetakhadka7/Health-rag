@@ -7,6 +7,7 @@ from sentence_transformers import SentenceTransformer
 DB_URL = "postgresql://rag:rag@localhost:5433/healthrag"
 TABLE = "chunks_fixed"
 MODEL = "BAAI/bge-small-en-v1.5"
+QUERY_PREFIX = "Represent this sentence for searching relevant passages: "
 
 _model = None
 
@@ -19,7 +20,7 @@ def get_model():
 
 
 def search(query, k=5):
-    vec = get_model().encode(query, normalize_embeddings=True)
+    vec = get_model().encode(QUERY_PREFIX + query, normalize_embeddings=True)
     with psycopg.connect(DB_URL) as conn:
         register_vector(conn)
         rows = conn.execute(
