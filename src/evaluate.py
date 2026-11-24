@@ -16,7 +16,10 @@ def get_search(method):
     if method == "hybrid":
         from hybrid import hybrid_search
         return hybrid_search
-    raise SystemExit("Method must be: vector, keyword or hybrid")
+    if method == "rerank":
+        from rerank import rerank_search
+        return rerank_search
+    raise SystemExit("Method must be: vector, keyword, rerank, or hybrid")
 
 
 def main():
@@ -50,3 +53,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+

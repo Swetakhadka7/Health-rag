@@ -47,6 +47,7 @@ Chunking: fixed 1000 chars / 200 overlap. Embeddings: bge-small-en-v1.5. Top 5 r
 | Vector only (with query prefix) | 0.53 | 0.89 |
 | Keyword only (BM25) | 0.55 | 0.89 |
 | Hybrid (vector + BM25, RRF) | 0.60 | 0.95 |
+| Hybrid + rerank (MiniLM cross-encoder, pool of 20) | 0.61 | 1.00 |
 
 ## Notes
 
@@ -54,3 +55,4 @@ Chunking: fixed 1000 chars / 200 overlap. Embeddings: bge-small-en-v1.5. Top 5 r
 - q013 (admission criteria) scores 0.00 for every method.
 - v1 questions q005 to q009 were drafted from the answer text, so they are easier than the others.
 - After fixing q013's labels, only vector and hybrid changed (they had found the added pages). Labels have not been re-reviewed for the other 18 questions.
+- Reranking raised hit rate to 1.00 (one question) but recall was flat (0.60 to 0.61); it improved 4 questions and worsened 4. The reranker is a general web-search model, not tuned for medical text.
