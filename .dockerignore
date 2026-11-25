@@ -1,0 +1,9 @@
+.venv
+.env
+.git
+data
+notebooks
+eval
+terminal
+__pycache__
+*.pyc

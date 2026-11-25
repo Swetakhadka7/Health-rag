@@ -1,10 +1,11 @@
+import os
 import sys
 
 import psycopg
 from pgvector.psycopg import register_vector
 from sentence_transformers import SentenceTransformer
 
-DB_URL = "postgresql://rag:rag@localhost:5433/healthrag"
+DB_URL = os.environ.get("DATABASE_URL", "postgresql://rag:rag@localhost:5433/healthrag")
 TABLE = "chunks_fixed"
 MODEL = "BAAI/bge-small-en-v1.5"
 QUERY_PREFIX = "Represent this sentence for searching relevant passages: "

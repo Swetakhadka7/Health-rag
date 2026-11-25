@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+google-genai
+python-dotenv
+psycopg[binary]
+pgvector
+sentence-transformers
+rank-bm25
+nltk
+numpy
