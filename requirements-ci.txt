@@ -1,0 +1,5 @@
+pytest<9
+httpx
+fastapi
+python-dotenv
+google-genai
