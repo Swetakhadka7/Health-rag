@@ -1,0 +1,4 @@
+{
+  "retrieval": {"method": "rerank", "mean_recall": 0.61, "hit_rate": 1.00},
+  "answers": {"answerable_min": 9, "refuse_min": 4}
+}
